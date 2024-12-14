@@ -1,0 +1,112 @@
+name: mesto-frontend
+
+x-platform: &platform
+              linux/amd64
+
+x-build-defaults: &build_defaults
+  additional_contexts:
+    frontend: ..
+  platforms:
+    - *platform
+  target: prod
+
+x-restart-policy: &restart_policy
+  restart: on-failure:3
+
+x-depends-on-healthy: &depends_on_healthy
+  condition: service_healthy
+
+x-healthcheck-defaults: &healthcheck_defaults
+  interval: 10s
+  timeout: 1m
+  start_period: 10s
+  retries: 3
+
+services:
+  store:
+    container_name: store
+    image: mesto/store
+    platform: *platform
+    build:
+      <<: *build_defaults
+      context: ../mfe/store
+    <<: *restart_policy
+    ports:
+      - "8084:8084"
+    healthcheck:
+      test: nc -z localhost 8084 || exit 1
+      <<: *healthcheck_defaults
+
+  auth:
+    container_name: auth
+    depends_on:
+      store:
+        <<: *depends_on_healthy
+    image: mesto/auth
+    platform: *platform
+    build:
+      <<: *build_defaults
+      context: ../mfe/auth
+    <<: *restart_policy
+    ports:
+      - "8081:8081"
+    healthcheck:
+      test: nc -z localhost 8081 || exit 1
+      <<: *healthcheck_defaults
+
+  profile:
+    container_name: profile
+    depends_on:
+      store:
+        <<: *depends_on_healthy
+    image: mesto/profile
+    platform: *platform
+    build:
+      <<: *build_defaults
+      context: ../mfe/profile
+    <<: *restart_policy
+    ports:
+      - "8082:8082"
+    healthcheck:
+      test: nc -z localhost 8082 || exit 1
+      <<: *healthcheck_defaults
+
+  cards:
+    container_name: cards
+    depends_on:
+      store:
+        <<: *depends_on_healthy
+    image: mesto/cards
+    platform: *platform
+    build:
+      <<: *build_defaults
+      context: ../mfe/cards
+    <<: *restart_policy
+    ports:
+      - "8083:8083"
+    healthcheck:
+      test: nc -z localhost 8083 || exit 1
+      <<: *healthcheck_defaults
+
+  host:
+    container_name: host
+    depends_on:
+      store:
+        <<: *depends_on_healthy
+      auth:
+        <<: *depends_on_healthy
+      profile:
+        <<: *depends_on_healthy
+      cards:
+        <<: *depends_on_healthy
+    image: mesto/host
+    platform: *platform
+    build:
+      <<: *build_defaults
+      context: ../mfe/host
+    <<: *restart_policy
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: nc -z localhost 8080 || exit 1
+      <<: *healthcheck_defaults
