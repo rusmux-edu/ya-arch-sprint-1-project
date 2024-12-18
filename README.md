@@ -7,4 +7,6 @@ Mesto – это примитивная социальная сеть, где п
 
 Подробнее о фронтенде можно узнать в [frontend/README.md](frontend/README.md).
 
+[Задание 2 – Декомпозиция монолитного бэкенда на микросервисы](task-2).
+
 <img src="docs/assets/mesto.jpeg" alt="Mesto">
