@@ -1,9 +1,8 @@
-# Социальная сеть Mesto
+# Mesto Social Network
 
-Mesto – это примитивная социальная сеть, где пользователи могут делиться фотографиями своих любимых мест, ставить лайки
-и редактировать профиль.
+Mesto is a simple social network where users can share photos of their favorite places, like posts, and edit their profile.
 
-В рамках этого проекта было необходимо разбить монолитный фронтенд на микрофронтенды. Решение находится в ветке
-[refactor/mfe](https://github.com/rusmux-edu/ya-arch-sprint-1-project/tree/refactor/mfe).
+As part of this project, the monolithic frontend needed to be split into micro frontends. The solution is in the
+[refactor/mfe](https://github.com/rusmux-edu/ya-arch-sprint-1-project/tree/refactor/mfe) branch.
 
-<img src="docs/assets/mesto.jpeg" alt="Mesto">
+![Mesto](docs/assets/mesto.jpeg)
