@@ -2,25 +2,27 @@
 
 # Mesto – Frontend
 
-Фронтенд написан на JS и чистом React, для написания CSS используется BEM. В качестве инструмента сборки используется
-Rsbuild.
+The frontend is written in JavaScript and pure React, using BEM for CSS. Rsbuild is used as the build tool.
 
-В рамках этого проекта было необходимо разбить монолитный фронтенд на микрофронтенды.
+As part of this project, it was necessary to split the monolithic frontend into micro frontends.
 
-Архитектурные решения находятся в папке [docs/decisions](docs/decisions):
+Architectural decisions are located in the [docs/decisions](docs/decisions) folder:
 
-* [000-mfe-split.md](docs/decisions/000-mfe-split.md) – Разделение на микрофронтенды
-* [000-mfe-framework.md](docs/decisions/000-mfe-framework.md) – Выбор фреймворка для микрофронтендов
+* [000-mfe-split.md](docs/decisions/000-mfe-split.md) – Splitting into micro frontends
+* [000-mfe-framework.md](docs/decisions/000-mfe-framework.md) – Choosing a framework for micro frontends
+* [001-shared-lib.md](docs/decisions/001-shared-lib.md) – Deciding on a shared library for micro frontends
+* [002-state-store.md](docs/decisions/002-state-store.md) – Choosing a state store for shared attributes
+* [003-linters.md](docs/decisions/003-linters.md) – Choosing linters for the project
 
-# Запуск
+# Running
 
-Самый простой способ запуска – через Docker Compose:
+The easiest way to run is through Docker Compose:
 
 ```bash
 docker compose -f docker/compose.yaml up
 ```
 
-Или можно запустить каждый микрофронтенд отдельно:
+Or you can run each micro frontend separately:
 
 ```bash
 cd mfe/<name>

@@ -1,12 +1,11 @@
-# Социальная сеть Mesto
+# Mesto Social Network
 
-Mesto – это примитивная социальная сеть, где пользователи могут делиться фотографиями своих любимых мест, ставить лайки
-и редактировать профиль.
+Mesto is a simple social network where users can share photos of their favorite places, like posts, and edit their profile.
 
-В рамках этого проекта было необходимо разбить монолитный фронтенд на микрофронтенды.
+As part of this project, the monolithic frontend needed to be split into micro frontends.
 
-Подробнее о фронтенде можно узнать в [frontend/README.md](frontend/README.md).
+You can learn more about the frontend in the [frontend](frontend) folder.
 
-[Задание 2 – Декомпозиция монолитного бэкенда на микросервисы](task-2).
+[Task 2 – Decomposing a Monolithic Backend into Microservices](task-2).
 
-<img src="docs/assets/mesto.jpeg" alt="Mesto">
+![Mesto](docs/assets/mesto.jpeg)
